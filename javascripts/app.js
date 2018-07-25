@@ -17,9 +17,9 @@ var roverette = {
 };
 
 var turn = "rover";
-console.log("Rover's turn starts now.")
-console.log("Direction: N")
-console.log("Position [0,0]")
+console.log("Rover's turn starts now.");
+console.log("Direction: N");
+console.log("Position [0,0]");
 
 // Obstacle generator
 var obstacle = [];
@@ -27,7 +27,7 @@ for (var n = 0; n <= 4; ++n) {
   obstacle[n] = {
     x: Math.floor(Math.random() * 9) + 1,
     y: Math.floor(Math.random() * 9) + 1
-  };
+  }
 }
 
 function turnLeft() {
@@ -135,6 +135,12 @@ function moveForward() {
       if (rover.x === 10) rover.x--;
       if (rover.y === -1) rover.y++;
       if (rover.y === 10) rover.y--;
+    } else if (rover.x === roverette.x || rover.y === roverette.y ) {
+      console.log ("Hello Roverette, you're in my way!");
+      if (rover.x === roverette.x && rover.direction === "W") rover.x++;
+        if (rover.y === roverette.y && rover.direction === "E") rover.x--;
+        if (rover.x === roverette.x && rover.direction === "S") rover.y--;
+        if (rover.y === roverette.y && rover.direction === "N") rover.y++;
     } else {
       console.log("Rover's new position: " + "[" + rover.x + "," + rover.y + "]");
       rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
@@ -173,6 +179,12 @@ function moveForward() {
       if (roverette.x === 10) roverette.x--;
       if (roverette.y === -1) roverette.y++;
       if (roverette.y === 10) roverette.y--;
+    } else if (rover.x === roverette.x || rover.y === roverette.y ) {
+      console.log ("Hello Rover, you're in my way!");
+      if (rover.x === roverette.x && rover.direction === "W") roverette.x++;
+      if (rover.y === roverette.y && rover.direction === "E") roverette.x--;
+      if (rover.x === roverette.x && rover.direction === "S") roverette.y--;
+      if (rover.y === roverette.y && rover.direction === "N") roverette.y++;
     } else {
       console.log("Roverette's new position: " + "[" + roverette.x + "," + roverette.y + "]");
       roverette.travelLog.push("[" + roverette.x + "," + roverette.y + "]");
@@ -217,7 +229,13 @@ function moveBackwards() {
       if (rover.x === 10) rover.x--;
       if (rover.y === -1) rover.y++;
       if (rover.y === 10) rover.y--;
-    } else {
+    } else if (rover.x === roverette.x || rover.y === roverette.y ) {
+      console.log ("Hello Roverette, you're in my way!");
+      if (rover.x === roverette.x && rover.direction === "W") rover.x--;
+      if (rover.y === roverette.y && rover.direction === "E") rover.x++;
+      if (rover.x === roverette.x && rover.direction === "S") rover.y++;
+      if (rover.y === roverette.y && rover.direction === "N") rover.y--;
+     } else {
       console.log("Rover's new position: " + "[" + rover.x + "," + rover.y + "]");
       rover.travelLog.push("[" + rover.x + "," + rover.y + "]");
     }
@@ -266,6 +284,12 @@ function moveBackwards() {
       if (roverette.x === 10) roverette.x--;
       if (roverette.y === -1) roverette.y++;
       if (roverette.y === 10) roverette.y--;
+    } else if (rover.x === roverette.x || rover.y === roverette.y ) {
+      console.log ("Hello Rover, you're in my way!");
+      if (rover.x === roverette.x && rover.direction === "W") roverette.x--;
+      if (rover.y === roverette.y && rover.direction === "E") roverette.x++;
+      if (rover.x === roverette.x && rover.direction === "S") roverette.y++;
+      if (rover.y === roverette.y && rover.direction === "N") roverette.y--;
     } else {
       console.log(
         "Roverette's new position: " + "[" + roverette.x + "," + roverette.y + "]"
@@ -273,7 +297,7 @@ function moveBackwards() {
       roverette.travelLog.push("[" + roverette.x + "," + roverette.y + "]");
     }
     turn = "rover";
-    console.log("Rover's turn starts.")
+    console.log("Rover's turn starts.");
   }
 }
 
